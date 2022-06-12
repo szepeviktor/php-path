@@ -29,10 +29,10 @@ jobs:
           dependency-versions: "highest"
 
       - name: "Check syntax"
-        run: "composer exec -- parallel-lint"
+        run: "composer exec -- parallel-lint src/"
 
   unit-tests:
-    name: "1️⃣ Unit tests"
+    name: "2️⃣ Unit tests"
     needs: "syntax"
     runs-on: "ubuntu-20.04"
     strategy:
@@ -72,7 +72,7 @@ jobs:
 #          php ./php-coveralls.phar -v
 
   static-analysis:
-    name: "2️⃣ Execute static analysis"
+    name: "3️⃣ Execute static analysis"
     needs: "syntax"
     runs-on: "ubuntu-20.04"
     steps:
@@ -96,7 +96,7 @@ jobs:
         run: "composer exec -- phpstan analyze -l 5 src/"
 
   coding-standards:
-    name: "3️⃣ Check coding standards"
+    name: "4️⃣ Check coding standards"
     needs: "syntax"
     runs-on: "ubuntu-20.04"
     steps:
