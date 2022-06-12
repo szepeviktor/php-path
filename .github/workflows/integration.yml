@@ -8,7 +8,7 @@ on:
 
 jobs:
   syntax:
-    name: ":one: Check non-printable ASCII characters"
+    name: "1️⃣ Check syntax"
     runs-on: "ubuntu-20.04"
     steps:
       - name: "Set up PHP"
@@ -19,7 +19,7 @@ jobs:
       - name: "Checkout code"
         uses: "actions/checkout@v3"
 
-      - name: ":zero: Find non-printable ASCII characters"
+      - name: "0️⃣ Find non-printable ASCII characters"
         run: |
           ! LC_ALL=C.UTF-8 find . -type f -name "*.php" -print0 | xargs -0 -- grep -PHn "[^ -~]"
 
@@ -32,7 +32,7 @@ jobs:
         run: "composer exec -- parallel-lint"
 
   unit-tests:
-    name: ":three: Unit tests"
+    name: "1️⃣ Unit tests"
     needs: "syntax"
     runs-on: "ubuntu-20.04"
     strategy:
@@ -72,7 +72,7 @@ jobs:
 #          php ./php-coveralls.phar -v
 
   static-analysis:
-    name: ":four: Execute static analysis"
+    name: "2️⃣ Execute static analysis"
     needs: "syntax"
     runs-on: "ubuntu-20.04"
     steps:
@@ -96,7 +96,7 @@ jobs:
         run: "composer exec -- phpstan analyze -l 5 src/"
 
   coding-standards:
-    name: ":two:  Check coding standards"
+    name: "3️⃣ Check coding standards"
     needs: "syntax"
     runs-on: "ubuntu-20.04"
     steps:
