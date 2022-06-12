@@ -29,7 +29,7 @@ jobs:
           dependency-versions: "highest"
 
       - name: "Check syntax"
-        uses: "composer exec -- parallel-lint"
+        run: "composer exec -- parallel-lint"
 
   unit-tests:
     name: ":three: Unit tests"
@@ -79,8 +79,8 @@ jobs:
       - name: "Set up PHP"
         uses: "shivammathur/setup-php@v2"
         with:
-          php-version: "8.1
-"
+          php-version: "8.1"
+
       - name: "Checkout code"
         uses: "actions/checkout@v3"
 
@@ -114,4 +114,4 @@ jobs:
           dependency-versions: "highest"
 
       - name: "Check syntax"
-        uses: "composer exec -- phpcs --standard=PSR12 -s src/"
+        run: "composer exec -- phpcs --standard=PSR12 -s src/"
