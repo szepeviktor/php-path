@@ -96,7 +96,7 @@ jobs:
         run: "composer exec -- phpstan analyze -l 5 src/"
 
   coding-standards:
-    name: ":two: Check coding standards"
+    name: ":two:  Check coding standards"
     needs: "syntax"
     runs-on: "ubuntu-20.04"
     steps:
