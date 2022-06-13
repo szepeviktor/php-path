@@ -1,9 +1,7 @@
 name: "Integrate"
 
 on:
-  push:
-    branches:
-      - "main"
+  push: null
   pull_request: null
 
 jobs:
